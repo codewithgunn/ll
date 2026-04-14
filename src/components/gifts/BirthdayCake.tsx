@@ -133,12 +133,12 @@ const BirthdayCake: React.FC<BirthdayCakeProps> = ({
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[600px] w-full p-4 bg-purple-50/30 rounded-3xl">
-      <div className="relative">
+      <div className="relative flex flex-col items-center">
         
         {/* Confetti / Sparkles when extinguished */}
         <AnimatePresence>
           {!isLit && (
-            <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none">
+            <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none z-50">
               {confettiPieces.map((piece) => (
                 <motion.div
                   key={piece.id}
@@ -168,7 +168,7 @@ const BirthdayCake: React.FC<BirthdayCakeProps> = ({
         </AnimatePresence>
 
         {/* The Cake */}
-        <div className="relative mt-20">
+        <div className="relative mt-20 flex flex-col items-center">
           {/* Candles */}
           <div className="absolute -top-12 left-0 right-0 flex justify-center gap-4 z-20">
             {[...Array(candlesCount)].map((_, i) => (
@@ -177,17 +177,17 @@ const BirthdayCake: React.FC<BirthdayCakeProps> = ({
           </div>
 
           {/* Cake Top Layer */}
-          <div className="w-48 h-24 bg-pink-100 rounded-t-[3rem] border-x-4 border-t-4 border-pink-200 relative z-10 mx-auto">
+          <div className="w-48 h-24 bg-pink-100 rounded-t-[3rem] border-x-4 border-t-4 border-pink-200 relative z-10">
             {/* Icing drips */}
-            <div className="absolute -bottom-4 left-0 right-0 flex justify-between px-2">
-               {[...Array(6)].map((_, i) => (
+            <div className="absolute -bottom-4 left-0 right-0 flex justify-around px-1">
+               {[...Array(5)].map((_, i) => (
                  <div key={i} className="w-8 h-8 bg-pink-100 rounded-full" />
                ))}
             </div>
           </div>
           
           {/* Cake Bottom Layer */}
-          <div className="w-64 h-32 bg-white rounded-t-[2rem] border-x-4 border-t-4 border-slate-100 relative shadow-xl">
+          <div className="w-64 h-32 bg-white rounded-t-[2rem] border-x-4 border-t-4 border-slate-100 relative shadow-xl overflow-hidden">
              {/* Decorative patterns */}
              <div className="absolute inset-0 opacity-10" style={{
                backgroundImage: 'radial-gradient(circle at 10px 10px, #ec4899 2px, transparent 0)',
@@ -203,12 +203,12 @@ const BirthdayCake: React.FC<BirthdayCakeProps> = ({
           </div>
 
           {/* Plate */}
-          <div className="w-80 h-4 bg-slate-50 border-b-4 border-slate-200 rounded-full mt-[-10px] mx-auto shadow-sm" />
+          <div className="w-80 h-4 bg-slate-50 border-b-4 border-slate-200 rounded-full mt-[-10px] shadow-sm relative z-0" />
         </div>
       </div>
 
       <div className="mt-16 text-center max-w-md">
-        <h3 className="text-2xl font-serif text-slate-800 mb-4">{message}</h3>
+        <h3 className="text-2xl font-serif text-slate-800 mb-4">{displayMessage}</h3>
         
         {isLit ? (
           <div className="flex flex-col gap-4 items-center">
