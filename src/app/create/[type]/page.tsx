@@ -22,10 +22,11 @@ const giftMetadata: Record<string, { title: string; fields: any[] }> = {
     ],
   },
   vinyl: {
-    title: 'Vinyl Player',
+    title: 'Virtual Mixtape',
     fields: [
-      { id: 'title', label: 'Song Title', type: 'text', placeholder: 'e.g. Our Favorite Song' },
-      { id: 'artist', label: 'Artist', type: 'text', placeholder: 'e.g. The Midnight Dreamers' },
+      { id: 'label', label: 'Mixtape Name', type: 'text', placeholder: 'e.g. Our Summer Hits' },
+      { id: 'sender', label: 'From', type: 'text', placeholder: 'Your Name' },
+      { id: 'spotifyUrl', label: 'Spotify Track Link', type: 'text', placeholder: 'Paste a Spotify song link...' },
     ],
   },
   bottle: {
@@ -89,7 +90,10 @@ export default function CreateGift() {
         .select()
         .single();
 
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase Error Details:', error);
+        throw error;
+      }
 
       if (data) {
         const url = `${window.location.origin}/gift/${data.id}`;

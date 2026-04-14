@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import Letter from '@/components/gifts/Letter';
 import FortuneCookie from '@/components/gifts/FortuneCookie';
-import VinylPlayer from '@/components/gifts/VinylPlayer';
+import CassetteTape from '@/components/gifts/CassetteTape';
 import DigiBouquet from '@/components/gifts/DigiBouquet';
 import Bottle from '@/components/gifts/Bottle';
 import CarePackage from '@/components/gifts/CarePackage';
@@ -71,7 +71,7 @@ export default function GiftPage() {
       case 'fortune':
         return <FortuneCookie fortune={config.fortune} />;
       case 'vinyl':
-        return <VinylPlayer title={config.title} artist={config.artist} />;
+        return <CassetteTape label={config.label} sender={config.sender} spotifyUrl={config.spotifyUrl} />;
       case 'bouquet':
         // The DigiBouquet component should be updated to accept an initial flowers prop if needed
         return <DigiBouquet />;
